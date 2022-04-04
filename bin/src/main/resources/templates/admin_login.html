@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sporty Shoes</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<br>
+	<br>
+	<div style="text-align:center">
+	<h6 th:text="${action}"></h6>
+	</div>
+	<div class="container">
+		<h1>Admin Login</h1>
+		<hr>
+		<h3>Enter Details</h3>
+		<form action="#" th:action="@{/verifyLogin}", method="POST">
+			<input name="username" type="text" placeholder="Username" class="form-control mb-4 col-4" required/>
+			<input name="password" type="password" placeholder="Password"class="form-control mb-4 col-4" required/>
+			<button class="btn btn-info col-2" type="submit">Log In</button>
+		</form>
+
+	</div>
+</body>
+</html>

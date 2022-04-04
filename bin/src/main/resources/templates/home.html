@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sporty Shoes</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<style>
+	img{
+	width: 200px;
+	height: 150px;
+	}
+	.containerSC {
+	position: absolute;
+	left: 58px;
+	top: 20px;
+	display: inline-block;
+	/* border: 2px solid red; */
+	}
+</style>
+<body>
+	<br>
+	<br>
+	<br>
+	<div class="container" style="text-align:right" th:if="${session.customerLogin == null}">
+		<a th:href="@{/register}" class="btn btn-primary btn-sm mb-3">Register</a>
+		<a th:href="@{/login}" class="btn btn-primary btn-sm mb-3">Customer Login</a> 
+		<a th:href="@{/adminLogin}" class="btn btn-primary btn-sm mb-3">Admin login</a>
+		<br>
+		<h4 style="color:red">Login or Register to start shopping</h4>
+	</div>
+	<div class="container" style="text-align:right" th:if="${session.customerLogin != null}">
+		<div class="containerSC">
+			<form th:action="@{/searchHome}" method="POST">
+				<input type="text" name="keyword" Placeholder="Search Products">
+				<button type="submit" class="btn btn-primary btn-sm mb-3" style="margin-top:12px">Search by Products</button>
+			</form>
+		</div>
+		<div th:if="${session.searchH != null}">
+			<a th:href="@{/goHome}" class="btn btn-primary btn-sm mb-3">Home</a>
+		</div>
+		<a th:href="@{/customerLogout}" class="btn btn-primary btn-sm mb-3">Logout</a>
+		<a th:href="@{/viewCart}" class="btn btn-primary btn-sm mb-3">View Cart</a>
+		<a th:href="@{/viewOrders/{email}(email=${session.customerLogin})}" class="btn btn-primary btn-sm mb-3">View Active Orders</a>
+	</div>
+	<div style="text-align:center">
+	</div>
+	<hr>
+	<div class="container">
+		<span>Welcome </span><span th:text="${session.custName}"></span>
+		<h1>Shop from below</h1>
+		<h5 th:text="${action}" style="color: red"></h5>
+		<div class="row">
+
+			<div class="col" th:each="product : ${session.productList}" style="padding-bottom:15px">
+				<table border="1">
+					<tr>
+						<td colspan="2"><img th:src="@{/Images/14.jpg}" alt="Image displayed here"></td>
+					</tr>
+					<tr>
+						<td>Company</td>
+						<td th:text="${product.company}"></td>
+					</tr>
+					<tr>
+						<td>Name</td>
+						<td th:text="${product.name}"></td>
+					</tr>
+					<tr>
+						<td>Price</td>
+						<td th:text="${product.price}"></td>
+					</tr>
+					<tr>
+						<td>Category</td>
+						<td th:text="${product.category}"></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align:center"><a th:href="@{/addCart/{id}(id=${product.id})}"	class="btn btn-primary">Add to Cart</a></td>
+					</tr>
+				</table>
+			</div>
+
+		</div>
+
+
+	</div>
+</body>
+</html>

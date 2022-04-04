@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sporty Shoes</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<br>
+	<div class="container" style="text-align: right">
+		<a th:href="@{/}" class="btn btn-primary btn-sm mb-3">Back to Home Page</a>
+	</div>
+	<hr>
+	<div class="container my-2">
+		<h1><span>Currently Active Orders</span><span th:text="${searchHeading}"></span></h1>
+		<h6 th:text="${action}"></h6>
+		<span th:text="${session.action}"
+			style="text-align: center; color: red"></span>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Product Id</th>
+					<th>Purchase Date</th>
+					<th>Size</th>
+					<th>Quantity</th>
+					<th>Total Cost</th>
+					<th>Ordered By</th>
+					<th>Customer Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="purchase : ${sPurchase}">
+					<td th:text="${purchase.id}"></td>
+					<td th:text="${purchase.productid}"></td>
+					<td th:text="${purchase.dop}"></td>
+					<td th:text="${purchase.size}"></td>
+					<td th:text="${purchase.quantity}"></td>
+					<td th:text="${purchase.totalcost}"></td>
+					<td th:text="${purchase.customer.email}"></td>
+					<td th:text="${purchase.customer.name}"></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+</body>
+</html>

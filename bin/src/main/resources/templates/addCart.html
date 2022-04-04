@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sporty Shoes</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<style>
+	img{
+	width: 200px;
+	height: 200px;
+	}
+</style>
+<body>
+<br>
+	<div class="container" style="text-align: right">
+		<a th:href="@{/}" class="btn btn-primary btn-sm mb-3">Back to Home</a>
+	</div>
+	<div class="container my-2">
+		<h1>Add Product</h1>
+		<form action="#" th:action="@{/confirmCart}", method="POST">
+			<table border="1">
+				<tbody>
+					<tr>
+						<td>&nbspProduct</td>
+						<td><img th:src="@{/Images/14.jpg}" alt="Image displayed here"></td>
+					</tr>
+					<tr>
+						<td>&nbspProduct Name</td>
+						<td><span th:text="${session.product.name}" style="text-align:center"></span></td>
+					</tr>
+					<tr>
+						<td>&nbspPrice</td>
+						<td><span th:text="${session.product.price}" style="text-align:center"></span></td>
+					</tr>
+					<tr>
+						<td>&nbspProduct Category</td>
+						<td><span th:text="${session.product.category}" style="text-align:center"></span></td>
+					</tr>
+					<tr>
+						<td>&nbspRequired Size</td>
+						<td><input type="text" name="size"
+							placeholder="size" class="form-control mb-3 col-15" required></td>
+					</tr>
+					<tr>
+						<td>&nbspRequired Quantity</td>
+						<td><input type="number" name="quantity"
+							th:placeholder="Quantity" class="form-control col-15" required></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align:center"><button type="submit"
+								class="btn btn-info col-10">Add to cart</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+	<hr>
+</body>
+</html>

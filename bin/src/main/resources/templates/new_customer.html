@@ -1,0 +1,32 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>EmployeeManagement System</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div style="text-align:center">
+	<h6 th:text="${action}"></h6>
+	</div>
+	<div class="container">
+		<h1>Sporty shoes</h1>
+		<hr>
+		<h2>Welcome, Enter details</h2>
+		<form action="#" th:action="@{/saveCustomer}" th:object="${customer}", method="POST">
+			<input type="text" th:field="*{email}"
+				placeholder="Enter Email" class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{name}"
+				placeholder="Enter Name" class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{contact}"
+				placeholder="Enter Contact number" class="form-control mb-4 col-4" required>
+			<input type="text" th:field="*{password}"
+				placeholder="Enter password" class="form-control mb-4 col-4" required>	
+			<button type="submit" class="btn btn-info col-2">Register</button>
+		</form>
+
+	</div>
+</body>
+</html>

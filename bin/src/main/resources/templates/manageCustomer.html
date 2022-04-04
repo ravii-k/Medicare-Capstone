@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Sporty Shoes</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<style>
+.containerSC {
+	position: absolute;
+	left: 58px;
+	top: 20px;
+	display: inline-block;
+	/* border: 2px solid red; */
+}
+</style>
+<body>
+	<br>
+	<div class="containerSC">
+		<form th:action="@{/searchCustomer}" method="POST">
+			<input type="text" name="keyword" Placeholder="Search customer">
+			<button type="submit" class="btn btn-primary btn-sm mb-3" style="margin-top:12px">Search Customer</button>
+		</form>
+	</div>
+	<div class="container" style="text-align: right">
+		<a th:href="@{/getDashboard}" class="btn btn-primary btn-sm mb-3">Back to Dashboard</a>
+	</div>
+	<hr>
+	<div class="container my-2">
+		<h1>Customer List</h1>
+		<h6 th:text="${action}"></h6>
+		<span th:text="${session.action}" style="text-align:center;color:red"></span>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Email</th>
+					<th>Name</th>
+					<th>Contact</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="customer : ${customers}">
+					<td th:text="${customer.email}"></td>
+					<td th:text="${customer.name}"></td>
+					<td th:text="${customer.contact}"></td>
+					<td><a	th:href="@{/deleteCustomer/{email}(email=${customer.email})}"
+						class="btn btn-danger">Delete</a>
+						<a	th:href="@{/customerOrders/{email}(email=${customer.email})}"
+						class="btn btn-primary">View Customer orders</a></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+</body>
+</html>

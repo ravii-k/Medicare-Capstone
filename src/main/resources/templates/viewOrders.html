@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Medicare</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+<h6>Medicare</h6>
+<hr>
+	<br>
+	<div class="container" style="text-align: right">
+		<a th:href="@{/}" class="btn btn-success btn-sm mb-3">Back to Home Page</a>
+	</div>
+	<hr>
+	<div class="container my-2">
+		<h1><span>Currently Active Orders</span><span th:text="${searchHeading}"></span></h1>
+		<h6 th:text="${action}"></h6>
+		<span th:text="${session.action}"
+			style="text-align: center; color: red"></span>
+		<table border="1" class="table table-striped table-responsive-md">
+			<thead>
+				<tr>
+					<th>Id</th>
+					<th>Product Id</th>
+					<th>Purchase Date</th>
+					
+					<th>Quantity</th>
+					<th>Total Cost</th>
+					<th>Ordered By</th>
+					<th>Customer Name</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="purchase : ${sPurchase}">
+					<td th:text="${purchase.id}"></td>
+					<td th:text="${purchase.productid}"></td>
+					<td th:text="${purchase.dop}"></td>
+					
+					<td th:text="${purchase.quantity}"></td>
+					<td th:text="${purchase.totalcost}"></td>
+					<td th:text="${purchase.customer.email}"></td>
+					<td th:text="${purchase.customer.name}"></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+	<hr>
+	<footer class="page-footer font-small cyan darken-3">
+
+  <!-- Footer Elements -->
+  <div class="container">
+
+    <!-- Grid row-->
+    <div class="row">
+
+      <!-- Grid column -->
+      <div class="col-md-12 py-5">
+        <div class="mb-5 flex-center">
+
+          <!-- Facebook -->
+          <a class="fb-ic">
+            <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Twitter -->
+          <a class="tw-ic">
+            <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!-- Google +-->
+          <a class="gplus-ic">
+            <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Linkedin -->
+          <a class="li-ic">
+            <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Instagram-->
+          <a class="ins-ic">
+            <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
+          </a>
+          <!--Pinterest-->
+          <a class="pin-ic">
+            <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
+          </a>
+        </div>
+      </div>
+      <!-- Grid column -->
+
+    </div>
+    <!-- Grid row-->
+
+  </div>
+  <!-- Footer Elements -->
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2022 Copyright:
+    <a href="/"> Ravi kashyap</a>
+  </div>
+  <!-- Copyright -->
+
+</footer> 
+</body>
+</html>

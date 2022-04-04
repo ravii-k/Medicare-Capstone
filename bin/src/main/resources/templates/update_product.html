@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+		<div class="container my-2">
+		<h1>Update Product</h1>
+		<form action="#" th:action="@{/updateProduct}" th:object="${product}"
+			, method="POST">
+			<table border="1">
+				<tbody>
+					<tr>
+						<td>Product Id</td>
+						<td><input type="hidden" th:field="*{id}" placeholder="${product.id}"/></td>
+					</tr>
+					<tr>
+						<td>&nbspManufacture Company Name</td>
+						<td><input type="text" th:field="*{company}"
+							placeholder="${product.company}" class="form-control col-15" required></td>
+					</tr>
+					<tr>
+						<td>&nbspProduct Name</td>
+						<td><input type="text" th:field="*{name}"
+							placeholder="${product.name}" class="form-control col-15" required></td>
+					</tr>
+					<tr>
+						<td>&nbspPrice</td>
+						<td><input type="text" th:field="*{price}"
+							placeholder="${product.price}" class="form-control col-15" required></td>
+					</tr>
+					<tr>
+						<td>&nbspProduct Category</td>
+						<td><input type="text" th:field="*{category}"
+							placeholder="${product.category}" class="form-control col-15" required></td>
+					</tr>
+					<tr>
+						<td colspan="2" style="text-align:center"><button type="submit"
+								class="btn btn-info col-10">Add Product</button></td>
+					</tr>
+				</tbody>
+			</table>
+		</form>
+	</div>
+</body>
+</html>
